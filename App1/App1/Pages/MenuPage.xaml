@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App1.Pages.MenuPage"
+             Title="Menu de Opções">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center">
+            <Button Text="Garçons"
+                    Image=""
+                    Clicked="GarconsOnClicked"/>
+            <Button Text="Entregadores"
+                    Image=""
+                    Clicked="EntregadoresOnClicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
