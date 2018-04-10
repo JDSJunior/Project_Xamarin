@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App1.Pages.GarconsPage">
     <TabbedPage.Children>
-        <ep:EntregadoresListPage Title="Listagem" x:Name="listagem"/>
-        <ep:EntregadoresPage Title="Inserir Novo" x:Name="inserir"/>
+        <!--<ep:EntregadoresListPage Title="Listagem" x:Name="listagem"/>
+        <ep:EntregadoresPage Title="Inserir Novo" x:Name="inserir"/>-->
     </TabbedPage.Children>
 </TabbedPage>

@@ -12,9 +12,6 @@
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="App.xaml.cs">
       <DependentUpon>*.xaml</DependentUpon>
     </Compile>
-    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="MainPage.xaml.cs">
-      <DependentUpon>*.xaml</DependentUpon>
-    </Compile>
     <Compile Update="Pages\EntregadoresListPage.xaml.cs">
       <DependentUpon>EntregadoresListPage.xaml</DependentUpon>
     </Compile>
@@ -22,9 +19,6 @@
 
   <ItemGroup>
     <EmbeddedResource Update="Pages\EntregadoresListPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Pages\EntregadoresPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\GarconsListPage.xaml">
