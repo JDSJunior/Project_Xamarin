@@ -25,7 +25,7 @@ namespace App1.Pages
 
         private async void EntregadoresOnClicked(object sender, EventArgs args)
         {
-            await Navigation.PushAsync(new EntregadoresPage());
+            await Navigation.PushAsync(new EntregadoresTabbedPage());
         }
 	}
 }
