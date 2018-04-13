@@ -11,6 +11,9 @@
             <Button Text="Entregadores"
                     Image=""
                     Clicked="EntregadoresOnClicked"/>
+            <Button Text="Tipos de Itens"
+                    Image=""
+                    Clicked="TiposItensCardapioOnClicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

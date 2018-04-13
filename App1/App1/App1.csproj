@@ -12,31 +12,40 @@
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="App.xaml.cs">
       <DependentUpon>*.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Pages\EntregadoresListPage.xaml.cs">
+    <Compile Update="Pages\Entregador\EntregadoresListPage.xaml.cs">
       <DependentUpon>EntregadoresListPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Pages\EntregadoresListPage.xaml">
+    <EmbeddedResource Update="Pages\Entregador\EntregadoresListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\EntregadoresNewContentPage.xaml">
+    <EmbeddedResource Update="Pages\Entregador\EntregadoresNewContentPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\EntregadoresTabbedPage.xaml">
+    <EmbeddedResource Update="Pages\Entregador\EntregadoresTabbedPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\GarconsListPage.xaml">
+    <EmbeddedResource Update="Pages\Garcon\GarconsListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\GarconsNewPage.xaml">
+    <EmbeddedResource Update="Pages\Garcon\GarconsNewPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\GarconsPage.xaml">
+    <EmbeddedResource Update="Pages\Garcon\GarconsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\MenuPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\TiposItenCardapio\TipoItensCardapioListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\TiposItenCardapio\TipoItensCardapioNewPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\TiposItenCardapio\TipoItensCardapioPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

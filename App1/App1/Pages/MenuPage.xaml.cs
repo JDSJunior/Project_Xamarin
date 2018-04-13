@@ -1,4 +1,5 @@
 ﻿using App1.DAL;
+using App1.Pages.TiposItenCardapio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,5 +28,11 @@ namespace App1.Pages
         {
             await Navigation.PushAsync(new EntregadoresTabbedPage());
         }
-	}
+
+        private async void TiposItensCardapioOnClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new TipoItensCardapioPage());
+        }
+
+    }
 }

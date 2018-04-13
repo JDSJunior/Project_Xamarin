@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App1.Pages.TiposItenCardapio.TipoItensCardapioListPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Padding="5,20,5,20">
+                <Label Text="Tipos de Itens Cardápio" VerticalOptions="Center" Font="25" HorizontalOptions="Center"/>
+            </StackLayout>
+            <ListView x:Name="listviewTiposItensCardapio" RowHeight="60">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="5,0,5,0" Orientation="Horizontal">
+                                <Image Source="{Binding CaminhoArquivoFoto}"/>
+                                <Label Text="{Binding Nome}" TextColor="Black" FontSize="Large" VerticalOptions="Center"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
