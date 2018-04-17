@@ -29,10 +29,10 @@ namespace App1.Pages
             await Navigation.PushAsync(new EntregadoresTabbedPage());
         }
 
-        private async void TiposItensCardapioOnClicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new TipoItensCardapioPage());
-        }
+        //private async void TiposItensCardapioOnClicked(object sender, EventArgs e)
+        //{
+        //    await Navigation.PushAsync(new TipoItensCardapioPage());
+        //}
 
     }
 }
