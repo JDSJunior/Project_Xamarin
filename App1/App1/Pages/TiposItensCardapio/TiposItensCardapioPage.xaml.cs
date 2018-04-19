@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace App1.Pages.TiposItenCardapio
+namespace App1.Pages.TiposItensCardápio
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TipoItensCardapioPage : TabbedPage
+    public partial class TiposItensCardápioPage : TabbedPage
     {
-        public TipoItensCardapioPage ()
+        public TiposItensCardápioPage ()
         {
             InitializeComponent();
         }

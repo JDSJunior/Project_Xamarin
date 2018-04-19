@@ -3,10 +3,76 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App1.Pages.GarconsNewPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Página de inserção de novos Garçons"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout VerticalOptions="Center">
+                <!-- 1 Grid em que toods os controles serão inseridos-->
+                <Grid Padding="5,10,5,10">
+                    <!-- Grid com 4 linhas e 1 coluna-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <!-- 2 Defeinição do frame que exibirá o titulo da página-->
+                    <Frame Grid.Row="0" Grid.Column="0" OutlineColor="Black"
+                           BackgroundColor="Yellow" HasShadow="False" Padding="5,5,5,5">
+                        <StackLayout>
+                            <!-- 3 definição do grid para o frame-->
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <!-- 4 Inserção de uma imagen e dois labels no grid-->
+                                <Image Source="icone_garcon.png" Grid.Row="0" Grid.Column="0"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="Novo Garçon" Font="24"
+                                       TextColor="Blue" HorizontalOptions="Start" VerticalOptions="Center"/>
+                                <Label Grid.Row="0" Grid.Column="2" Text="Id" HorizontalOptions="End" Font ="Bold, 24" TextColor="Blue" x:Name="idgarcon" VerticalOptions="Center"/>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                    
+                    <!-- Definição do frame e grid que recebarão os dados-->
+                    <Frame Grid.Row="1" Grid.Column="0" OutlineColor="Black" HasShadow="True" Padding="5,5,5,5">
+                        <StackLayout>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Entry Placeholder="Nome do Garcon" PlaceholderColor="Gray" Grid.Row="0" Grid.Column="0"
+                                   x:Name="nome"/>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                    
+                    <!-- Frame e grid que hospedarão os botões-->
+                    <Frame Grid.Row="2" Grid.Column="0" OutlineColor="Black" HasShadow="True" Padding="5,5,5,5">
+                        <StackLayout>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Row="0" Grid.Column="0" Text="Salvar" Clicked="BtnGravarClick"/>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

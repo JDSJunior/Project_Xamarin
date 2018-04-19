@@ -11,9 +11,12 @@
             <Button Text="Entregadores"
                     Image=""
                     Clicked="EntregadoresOnClicked"/>
-            <!--<Button Text="Tipos de Itens"
+            <Button Text="Tipos de Itens"
                     Image=""
-                    Clicked="TiposItensCardapioOnClicked"/>-->
+                    Clicked="TiposItensCardápio"/>
+            <Button Text="Camera"
+                    Image=""
+                    Clicked="Page1"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

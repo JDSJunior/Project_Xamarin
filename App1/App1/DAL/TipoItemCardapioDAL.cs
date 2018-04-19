@@ -23,36 +23,64 @@ namespace App1.DAL
             TiposItensCardapio.Add(new TipoItemCardapio()
             {
                 Id = 2,
-                Nome = "Bebidas",
-                CaminhoArquivoFoto = "bebidas.png"
+                Nome = "Cachorro Quente",
+                CaminhoArquivoFoto = "cachorro_quente.png"
             });
 
             TiposItensCardapio.Add(new TipoItemCardapio()
             {
                 Id = 3,
-                Nome = "Saladas",
-                CaminhoArquivoFoto = "saladas.png"
+                Nome = "Lasanha",
+                CaminhoArquivoFoto = "lasanha.png"
             });
 
             TiposItensCardapio.Add(new TipoItemCardapio()
             {
                 Id = 4,
-                Nome = "Sanduiches",
-                CaminhoArquivoFoto = "sanduiche.png"
+                Nome = "Xis",
+                CaminhoArquivoFoto = "xis.png"
             });
 
             TiposItensCardapio.Add(new TipoItemCardapio()
             {
                 Id = 5,
-                Nome = "Sobremesas",
-                CaminhoArquivoFoto = "sobremesas.png"
+                Nome = "Pastel",
+                CaminhoArquivoFoto = "pastel.png"
             });
 
             TiposItensCardapio.Add(new TipoItemCardapio()
             {
                 Id = 6,
-                Nome = "Carnes",
-                CaminhoArquivoFoto = "carnes.png"
+                Nome = "Espetinho",
+                CaminhoArquivoFoto = "espetinho.png"
+            });
+
+            TiposItensCardapio.Add(new TipoItemCardapio()
+            {
+                Id = 7,
+                Nome = "Torta",
+                CaminhoArquivoFoto = "torta.png"
+            });
+
+            TiposItensCardapio.Add(new TipoItemCardapio()
+            {
+                Id = 8,
+                Nome = "Sanduiche",
+                CaminhoArquivoFoto = "sanduiche.png"
+            });
+
+            TiposItensCardapio.Add(new TipoItemCardapio()
+            {
+                Id = 9,
+                Nome = "Macarrão",
+                CaminhoArquivoFoto = "macarrão.png"
+            });
+
+            TiposItensCardapio.Add(new TipoItemCardapio()
+            {
+                Id = 10,
+                Nome = "Pizza",
+                CaminhoArquivoFoto = "pizza.png"
             });
         }
 
@@ -66,9 +94,10 @@ namespace App1.DAL
             return TiposItensCardapio;
         }
 
-        public void Add(TipoItemCardapio tipoitemcardapio)
+        public void Add(TipoItemCardapio tipoItemCardapio)
         {
-            TiposItensCardapio.Add(tipoitemcardapio);
+            TiposItensCardapio.Add(tipoItemCardapio);
         }
+
     }
 }

@@ -15,27 +15,13 @@ namespace App1.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GarconsListPage : ContentPage
     {
-        ObservableCollection<Garcon> garcons = new ObservableCollection<Garcon>();
+        private GarconDAL Garcons = GarconDAL.GetInstance();
 
         public GarconsListPage()
         {
             InitializeComponent();
 
-            GarconsListView.ItemsSource = garcons;
-
-            garcons.Add(new Garcon { Nome = "Brauzio" });
-            garcons.Add(new Garcon { Nome = "Asdrugio" });
-            garcons.Add(new Garcon { Nome = "Entencius" });
-            garcons.Add(new Garcon { Nome = "Gesdefrau" });
-            garcons.Add(new Garcon { Nome = "Cartucius" });
-            garcons.Add(new Garcon { Nome = "Adoliterio" });
-            garcons.Add(new Garcon { Nome = "Kenteucio" });
-            garcons.Add(new Garcon { Nome = "Mineslau" });
-            garcons.Add(new Garcon { Nome = "Gesdefrau" });
-            garcons.Add(new Garcon { Nome = "Cartucius" });
-            garcons.Add(new Garcon { Nome = "Adoliterio" });
-            garcons.Add(new Garcon { Nome = "Kenteucio" });
-            garcons.Add(new Garcon { Nome = "Mineslau" });
+            GarconsListView.ItemsSource = Garcons.GetAll();
         }
     }
 }
