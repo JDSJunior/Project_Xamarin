@@ -11,15 +11,15 @@ using Xamarin.Forms.Xaml;
 namespace App1.Pages.TiposItensCardapio
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class TiposItensCardapioListPage : ContentPage
+	public partial class TiposItensPage : ContentPage
 	{
-        private TipoItemCardapioDAL ItensCardapio = TipoItemCardapioDAL.GetInstance();
+        private TipoItemCardapioDAL dalItensCardapio = TipoItemCardapioDAL.GetInstance();
 
-		public TiposItensCardapioListPage ()
+        public TiposItensPage ()
 		{
 			InitializeComponent ();
 
-            listviewTiposItensCardapio.ItemsSource = ItensCardapio.GetAll();
+            listviewItensCardapio.ItemsSource = dalItensCardapio.GetAll();
 		}
 	}
 }

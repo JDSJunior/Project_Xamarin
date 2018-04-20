@@ -13,7 +13,7 @@
                     Clicked="EntregadoresOnClicked"/>
             <Button Text="Tipos de Itens"
                     Image=""
-                    Clicked="TiposItensCardápio"/>
+                    Clicked="TiposItensCardapio"/>
             <Button Text="Camera"
                     Image=""
                     Clicked="Page1"/>

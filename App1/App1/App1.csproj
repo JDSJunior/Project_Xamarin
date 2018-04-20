@@ -16,8 +16,8 @@
     <Compile Update="Pages\Entregador\EntregadoresListPage.xaml.cs">
       <DependentUpon>EntregadoresListPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Pages\TiposItensCardapio\TiposItensCardapioPage.xaml.cs">
-      <DependentUpon>TiposItensCardapioPage.xaml</DependentUpon>
+    <Compile Update="Pages\TiposItensCardapio\TiposCardapioTabbedPage.xaml.cs">
+      <DependentUpon>TiposCardapioTabbedPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -46,10 +46,13 @@
     <EmbeddedResource Update="Pages\MenuPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\TiposItensCardapio\TiposItensCardapioListPage.xaml">
+    <EmbeddedResource Update="Pages\TiposItensCardapio\TiposCardapioTabbedPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\TiposItensCardapio\TiposItensCardapioPage.xaml">
+    <EmbeddedResource Update="Pages\TiposItensCardapio\TiposItensNewPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\TiposItensCardapio\TiposItensPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
