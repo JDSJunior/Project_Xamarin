@@ -26,6 +26,8 @@ namespace App1.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::PCLStorage.Resource.String.ApplicationName = global::App1.Droid.Resource.String.ApplicationName;
+			global::PCLStorage.Resource.String.Hello = global::App1.Droid.Resource.String.Hello;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::App1.Droid.Resource.Attribute.actionBarSize;
 		}
 		
@@ -3624,6 +3626,12 @@ namespace App1.Droid
 		
 		public partial class String
 		{
+			
+			// aapt resource value: 0x7f0a003f
+			public const int ApplicationName = 2131361855;
+			
+			// aapt resource value: 0x7f0a003e
+			public const int Hello = 2131361854;
 			
 			// aapt resource value: 0x7f0a0015
 			public const int abc_action_bar_home_description = 2131361813;
