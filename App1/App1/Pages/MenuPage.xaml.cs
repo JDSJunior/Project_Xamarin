@@ -34,10 +34,5 @@ namespace App1.Pages
             await Navigation.PushAsync(new TiposCardapioTabbedPage());
         }
 
-        private async void Page1(object sender, EventArgs args)
-        {
-            await Navigation.PushAsync(new Page1());
-        }
-
     }
 }
