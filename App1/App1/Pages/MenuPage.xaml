@@ -14,9 +14,6 @@
             <Button Text="Tipos de Itens"
                     Image=""
                     Clicked="TiposItensCardapio"/>
-            <Button Text="Camera"
-                    Image=""
-                    Clicked="Page1"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
