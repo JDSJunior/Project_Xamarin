@@ -99,5 +99,10 @@ namespace App1.DAL
             TiposItensCardapio.Add(tipoItemCardapio);
         }
 
+        public void Remover(TipoItemCardapio tipoItemCardapio)
+        {
+            TiposItensCardapio.Remove(tipoItemCardapio);
+        }
+
     }
 }

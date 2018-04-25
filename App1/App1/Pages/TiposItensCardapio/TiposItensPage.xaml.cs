@@ -1,4 +1,5 @@
 ﻿using App1.DAL;
+using App1.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,5 +22,18 @@ namespace App1.Pages.TiposItensCardapio
 
             listviewItensCardapio.ItemsSource = dalItensCardapio.GetAll();
 		}
+
+        public async void OnRemoverClick(object sender, EventArgs e)
+        {
+            var mi = ((MenuItem)sender);
+            var item = mi.CommandParameter as TipoItemCardapio;
+            var opcao = await DisplayAlert("Confirmação de exclusão", "Confirma excluir o item " + item.Nome.ToUpper() + "?", "Sim", "Não");
+            if (opcao)
+            {
+                dalItensCardapio.Remover(item);
+            }
+        }
+
+
 	}
 }
