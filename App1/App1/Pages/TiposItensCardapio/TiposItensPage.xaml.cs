@@ -34,6 +34,13 @@ namespace App1.Pages.TiposItensCardapio
             }
         }
 
+        public async void OnAlterarClick(object sender, EventArgs e)
+        {
+            var mi = ((MenuItem)sender);
+            var item = mi.CommandParameter as TipoItemCardapio;
+            await Navigation.PushModalAsync(new TiposItensCardapioEditPage(item));
+        }
+
 
 	}
 }

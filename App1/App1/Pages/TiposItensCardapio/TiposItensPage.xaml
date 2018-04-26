@@ -16,7 +16,7 @@
                                 <Label Text="{Binding Nome}" TextColor="Blue" FontSize="Large" VerticalOptions="Center"/>
                         </StackLayout>
                             <ViewCell.ContextActions>
-                                <!--<MenuItem Clicked="OnAlterarClick" CommandParameter="{Binding}" Text="Alterar"/>-->
+                                <MenuItem Clicked="OnAlterarClick" CommandParameter="{Binding}" Text="Alterar"/>
                                 <MenuItem Clicked="OnRemoverClick" CommandParameter="{Binding}" Text="Remover" IsDestructive="True"/>
                             </ViewCell.ContextActions>
                     </ViewCell>
