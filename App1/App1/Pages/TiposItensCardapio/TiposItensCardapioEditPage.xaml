@@ -34,7 +34,6 @@
                             </Grid>
                         </StackLayout>
                         
-                        
                     </Frame>
                     <Frame Grid.Row="1" Grid.Column="0" OutlineColor="Black" HasShadow="True" Padding="5,5,5,5">
                         <StackLayout>

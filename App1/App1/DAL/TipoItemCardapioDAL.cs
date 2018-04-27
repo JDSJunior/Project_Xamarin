@@ -104,5 +104,10 @@ namespace App1.DAL
             TiposItensCardapio.Remove(tipoItemCardapio);
         }
 
+        public void Update(TipoItemCardapio tipoItemCardapio)
+        {
+            this.TiposItensCardapio[this.TiposItensCardapio.IndexOf(tipoItemCardapio)] = tipoItemCardapio;
+        }
+
     }
 }

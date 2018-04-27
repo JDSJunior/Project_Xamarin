@@ -13,27 +13,28 @@ using Xamarin.Forms.Xaml;
 
 namespace App1.Pages.TiposItensCardapio
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class TiposItensCardapioEditPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class TiposItensCardapioEditPage : ContentPage
+    {
         private TipoItemCardapio tipoItemCardapio;
         private string caminhoArquivo;
-        private TipoItemCardapioDAL dalTipoItensCardapio = TipoItemCardapioDAL.GetInstance();
+        private TipoItemCardapioDAL dalTiposItensCardapio = TipoItemCardapioDAL.GetInstance();
+        
 
-		public TiposItensCardapioEditPage (TipoItemCardapio tipoItemCardapio)
-		{
-			InitializeComponent ();
+        public TiposItensCardapioEditPage(TipoItemCardapio tipoItemCardapio)
+        {
+            InitializeComponent();
             PopularFormulario(tipoItemCardapio);
             RegistraClickBotaoCamera(idtipoitemcardapio.Text.Trim());
             RegistraClickBotaoAlbum();
-		}
+        }
 
         private void PopularFormulario(TipoItemCardapio tipoItemCardapio)
         {
             this.tipoItemCardapio = tipoItemCardapio;
             idtipoitemcardapio.Text = tipoItemCardapio.Id.ToString();
             nome.Text = tipoItemCardapio.Nome;
-            caminhoArquivo = setArquivoPCL.Result.Path;
+            //caminhoArquivo = setArquivoPCL.Result.Path;
             fototipoitemcardapio.Source = ImageSource.FromFile(tipoItemCardapio.CaminhoArquivoFoto);
         }
 
@@ -104,7 +105,17 @@ namespace App1.Pages.TiposItensCardapio
 
         public async void BtnGravarClick(object sender, EventArgs e)
         {
-            //terminar aqui
+            if (nome.Text.Trim() == string.Empty)
+            {
+                await this.DisplayAlert("Erro", "Voce precisa informar o nome para o novo tipo de item do cardápio", "OK");
+            }
+            else
+            {
+                this.tipoItemCardapio.Nome = nome.Text;
+                this.tipoItemCardapio.CaminhoArquivoFoto = caminhoArquivo;
+                dalTiposItensCardapio.Update(this.tipoItemCardapio);
+                await Navigation.PopModalAsync();
+            }
         }
-	}
+    }
 }
