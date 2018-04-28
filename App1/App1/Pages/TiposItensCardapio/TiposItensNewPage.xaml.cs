@@ -95,19 +95,19 @@ namespace App1.Pages.TiposItensCardapio
                 }
 
                 //instruções de recuração de arquivo com base no caminho               
-                //var getArquivoPcl = FileSystem.Current.GetFileFromPathAsync(file.Path);
+                var getArquivoPcl = FileSystem.Current.GetFileFromPathAsync(file.Path);
 
                 //recupera o caminho raiz da aplicação
-                //var rootFolder = FileSystem.Current.LocalStorage;
+                var rootFolder = FileSystem.Current.LocalStorage;
 
                 //caso a pasta fotos não exista ela é criada
-                //var folderFoto = await rootFolder.CreateFolderAsync("Fotos", CreationCollisionOption.OpenIfExists);
+                var folderFoto = await rootFolder.CreateFolderAsync("Fotos", CreationCollisionOption.OpenIfExists);
 
                 //cria o arquivo referente a foto selecionada
-                //var setArquivoPCL = folderFoto.CreateFileAsync(getArquivoPcl.Result.Name, CreationCollisionOption.ReplaceExisting);
+                var setArquivoPCL = folderFoto.CreateFileAsync(getArquivoPcl.Result.Name, CreationCollisionOption.ReplaceExisting);
 
                 //guarda o caminho referente a foto selecionada
-                //caminhoArquivo = setArquivoPCL.Result.Path;
+                caminhoArquivo = setArquivoPCL.Result.Path;
 
                 //recupera o arquivo selecionado e o atribui ao controle o formulario
                 fototipoitemcardapio.Source = ImageSource.FromStream(() =>

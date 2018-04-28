@@ -34,7 +34,7 @@ namespace App1.Pages.TiposItensCardapio
             this.tipoItemCardapio = tipoItemCardapio;
             idtipoitemcardapio.Text = tipoItemCardapio.Id.ToString();
             nome.Text = tipoItemCardapio.Nome;
-            //caminhoArquivo = setArquivoPCL.Result.Path;
+            //caminhoArquivo = tipoItemCardapio.CaminhoArquivoFoto;
             fototipoitemcardapio.Source = ImageSource.FromFile(tipoItemCardapio.CaminhoArquivoFoto);
         }
 
@@ -69,7 +69,6 @@ namespace App1.Pages.TiposItensCardapio
                     var stream = file.GetStream();
                     file.Dispose();
                     return stream;
-
                 });
             };
         }
