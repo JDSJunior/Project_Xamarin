@@ -1,4 +1,5 @@
 ﻿using SQLite;
+using SQLite.Net.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,7 +9,7 @@ namespace App1.Models
      public class TipoItemCardapio
     {
         [PrimaryKey, AutoIncrement]
-        public long? Id { get; set; }
+        public long? TipoItemCardapioId { get; set; }
         public string Nome { get; set; }
         public byte Foto { get; set; }
 
@@ -20,12 +21,12 @@ namespace App1.Models
             {
                 return false;
             }
-            return (Id.Equals(tipoItemCardapio.Id));
+            return (TipoItemCardapioId.Equals(tipoItemCardapio.TipoItemCardapioId));
         }
 
         public override int GetHashCode()
         {
-            return Id.GetHashCode();
+            return TipoItemCardapioId.GetHashCode();
         }
     }
 }

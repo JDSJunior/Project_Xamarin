@@ -18,7 +18,7 @@ namespace App1.Pages.TiposItensCardapio
     {
         private TipoItemCardapio tipoItemCardapio;
         private string caminhoArquivo;
-        private TipoItemCardapioDAL dalTiposItensCardapio = TipoItemCardapioDAL.GetInstance();
+        //private TipoItemCardapioDAL dalTiposItensCardapio = TipoItemCardapioDAL.GetInstance();
         
 
         public TiposItensCardapioEditPage(TipoItemCardapio tipoItemCardapio)
@@ -32,10 +32,10 @@ namespace App1.Pages.TiposItensCardapio
         private void PopularFormulario(TipoItemCardapio tipoItemCardapio)
         {
             this.tipoItemCardapio = tipoItemCardapio;
-            idtipoitemcardapio.Text = tipoItemCardapio.Id.ToString();
+            //idtipoitemcardapio.Text = tipoItemCardapio.Id.ToString();
             nome.Text = tipoItemCardapio.Nome;
             //caminhoArquivo = tipoItemCardapio.CaminhoArquivoFoto;
-            fototipoitemcardapio.Source = ImageSource.FromFile(tipoItemCardapio.CaminhoArquivoFoto);
+            //fototipoitemcardapio.Source = ImageSource.FromFile(tipoItemCardapio.CaminhoArquivoFoto);
         }
 
         private void RegistraClickBotaoAlbum()
@@ -111,8 +111,8 @@ namespace App1.Pages.TiposItensCardapio
             else
             {
                 this.tipoItemCardapio.Nome = nome.Text;
-                this.tipoItemCardapio.CaminhoArquivoFoto = caminhoArquivo;
-                dalTiposItensCardapio.Update(this.tipoItemCardapio);
+                //this.tipoItemCardapio.CaminhoArquivoFoto = caminhoArquivo;
+                //dalTiposItensCardapio.Update(this.tipoItemCardapio);
                 await Navigation.PopModalAsync();
             }
         }

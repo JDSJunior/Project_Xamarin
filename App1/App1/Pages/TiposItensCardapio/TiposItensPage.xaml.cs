@@ -14,14 +14,18 @@ namespace App1.Pages.TiposItensCardapio
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TiposItensPage : ContentPage
 	{
-        private TipoItemCardapioDAL dalItensCardapio = TipoItemCardapioDAL.GetInstance();
+        private TipoItemCardapioDAL dalItensCardapio = new TipoItemCardapioDAL();
 
         public TiposItensPage ()
 		{
 			InitializeComponent ();
-
-            listviewItensCardapio.ItemsSource = dalItensCardapio.GetAll();
 		}
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            listviewItensCardapio.ItemsSource = dalItensCardapio.GetAll();
+        }
 
         public async void OnRemoverClick(object sender, EventArgs e)
         {
@@ -30,7 +34,7 @@ namespace App1.Pages.TiposItensCardapio
             var opcao = await DisplayAlert("Confirmação de exclusão", "Confirma excluir o item " + item.Nome.ToUpper() + "?", "Sim", "Não");
             if (opcao)
             {
-                dalItensCardapio.Remover(item);
+                dalItensCardapio.DeleteById((long)item.TipoItemCardapioId);
             }
         }
 

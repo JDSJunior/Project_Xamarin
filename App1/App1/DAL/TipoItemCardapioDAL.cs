@@ -1,113 +1,49 @@
-﻿using App1.Models;
+﻿using App1.Infraestructure;
+using App1.Models;
+using SQLite.Net;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
+using Xamarin.Forms;
 
 namespace App1.DAL
 {
     public class TipoItemCardapioDAL
     {
-        private ObservableCollection<TipoItemCardapio> TiposItensCardapio = new ObservableCollection<TipoItemCardapio>();
-        private static TipoItemCardapioDAL TipoItemCardapioInstance = new TipoItemCardapioDAL();
+        private SQLiteConnection sqlConnection;
 
-        private TipoItemCardapioDAL()
+        public TipoItemCardapioDAL()
         {
-            TiposItensCardapio.Add(new TipoItemCardapio()
-            {
-                Id = 1,
-                Nome = "Pizza",
-                CaminhoArquivoFoto = "pizza.png"
-            });
-
-            TiposItensCardapio.Add(new TipoItemCardapio()
-            {
-                Id = 2,
-                Nome = "Cachorro Quente",
-                CaminhoArquivoFoto = "cachorro_quente.png"
-            });
-
-            TiposItensCardapio.Add(new TipoItemCardapio()
-            {
-                Id = 3,
-                Nome = "Lasanha",
-                CaminhoArquivoFoto = "lasanha.png"
-            });
-
-            TiposItensCardapio.Add(new TipoItemCardapio()
-            {
-                Id = 4,
-                Nome = "Xis",
-                CaminhoArquivoFoto = "xis.png"
-            });
-
-            TiposItensCardapio.Add(new TipoItemCardapio()
-            {
-                Id = 5,
-                Nome = "Pastel",
-                CaminhoArquivoFoto = "pastel.png"
-            });
-
-            TiposItensCardapio.Add(new TipoItemCardapio()
-            {
-                Id = 6,
-                Nome = "Espetinho",
-                CaminhoArquivoFoto = "espetinho.png"
-            });
-
-            TiposItensCardapio.Add(new TipoItemCardapio()
-            {
-                Id = 7,
-                Nome = "Torta",
-                CaminhoArquivoFoto = "torta.png"
-            });
-
-            TiposItensCardapio.Add(new TipoItemCardapio()
-            {
-                Id = 8,
-                Nome = "Sanduiche",
-                CaminhoArquivoFoto = "sanduiche.png"
-            });
-
-            TiposItensCardapio.Add(new TipoItemCardapio()
-            {
-                Id = 9,
-                Nome = "Macarrão",
-                CaminhoArquivoFoto = "macarrão.png"
-            });
-
-            TiposItensCardapio.Add(new TipoItemCardapio()
-            {
-                Id = 10,
-                Nome = "Pizza",
-                CaminhoArquivoFoto = "pizza.png"
-            });
+            this.sqlConnection = DependencyService.Get<IDataBaseConnection>().DbConnection();
+            this.sqlConnection.CreateTable<TipoItemCardapio>();
         }
 
-        public static TipoItemCardapioDAL GetInstance()
+        public IEnumerable<TipoItemCardapio> GetAll()
         {
-            return TipoItemCardapioInstance;
+            return (from t in sqlConnection.Table<TipoItemCardapio>() select t).OrderBy(i => i.Nome).ToList();
         }
 
-        public ObservableCollection<TipoItemCardapio> GetAll()
+        public TipoItemCardapio GetItemById(long id)
         {
-            return TiposItensCardapio;
+            return sqlConnection.Table<TipoItemCardapio>().FirstOrDefault(t => t.TipoItemCardapioId == id);
+        }
+
+        public void DeleteById(long id)
+        {
+            sqlConnection.Delete<TipoItemCardapio>(id);
         }
 
         public void Add(TipoItemCardapio tipoItemCardapio)
         {
-            TiposItensCardapio.Add(tipoItemCardapio);
-        }
-
-        public void Remover(TipoItemCardapio tipoItemCardapio)
-        {
-            TiposItensCardapio.Remove(tipoItemCardapio);
+            sqlConnection.Insert(tipoItemCardapio);
         }
 
         public void Update(TipoItemCardapio tipoItemCardapio)
         {
-            this.TiposItensCardapio[this.TiposItensCardapio.IndexOf(tipoItemCardapio)] = tipoItemCardapio;
+            sqlConnection.Update(tipoItemCardapio);
         }
-
     }
 }
+ 

@@ -16,7 +16,7 @@ namespace App1.Pages.TiposItensCardapio
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TiposItensNewPage : ContentPage
 	{
-        private TipoItemCardapioDAL dalTiposItensCardapio = TipoItemCardapioDAL.GetInstance();
+        //private TipoItemCardapioDAL dalTiposItensCardapio = TipoItemCardapioDAL.GetInstance();
         private string caminhoArquivo;
 
 		public TiposItensNewPage ()
@@ -30,8 +30,8 @@ namespace App1.Pages.TiposItensCardapio
 
         private void PreparaParaNovoTipoItemCardapio()
         {
-            var novoId = dalTiposItensCardapio.GetAll().Max(x => x.Id) + 1;
-            idItemCardapio.Text = novoId.ToString().Trim();
+            //var novoId = dalTiposItensCardapio.GetAll().Max(x => x.Id) + 1;
+            //idItemCardapio.Text = novoId.ToString().Trim();
             nome.Text = string.Empty;
             fototipoitemcardapio.Source = null;
         }
@@ -127,12 +127,12 @@ namespace App1.Pages.TiposItensCardapio
             }
             else
             {
-                dalTiposItensCardapio.Add(new TipoItemCardapio()
-                {
-                    Id = Convert.ToUInt32(idItemCardapio.Text),
-                    Nome = nome.Text,
-                    CaminhoArquivoFoto = caminhoArquivo
-                });
+               //dalTiposItensCardapio.Add(new TipoItemCardapio()
+               // {
+               //     Id = Convert.ToUInt32(idItemCardapio.Text),
+               //     Nome = nome.Text,
+               //     CaminhoArquivoFoto = caminhoArquivo
+               // });
 
                 PreparaParaNovoTipoItemCardapio();
             }
