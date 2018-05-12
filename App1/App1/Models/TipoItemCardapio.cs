@@ -11,7 +11,7 @@ namespace App1.Models
         [PrimaryKey, AutoIncrement]
         public long? TipoItemCardapioId { get; set; }
         public string Nome { get; set; }
-        public byte Foto { get; set; }
+        public byte[] Foto { get; set; }
 
 
         public override bool Equals(object obj)

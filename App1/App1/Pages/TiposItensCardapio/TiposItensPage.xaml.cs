@@ -36,6 +36,8 @@ namespace App1.Pages.TiposItensCardapio
             {
                 dalItensCardapio.DeleteById((long)item.TipoItemCardapioId);
             }
+
+            listviewItensCardapio.ItemsSource = dalItensCardapio.GetAll();
         }
 
         public async void OnAlterarClick(object sender, EventArgs e)

@@ -4,6 +4,7 @@ using PCLStorage;
 using Plugin.Media;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,8 @@ namespace App1.Pages.TiposItensCardapio
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TiposItensNewPage : ContentPage
 	{
-        //private TipoItemCardapioDAL dalTiposItensCardapio = TipoItemCardapioDAL.GetInstance();
+        private TipoItemCardapioDAL dalTiposItensCardapio = new TipoItemCardapioDAL();
+        private byte[] bytesFoto;
         private string caminhoArquivo;
 
 		public TiposItensNewPage ()
@@ -30,8 +32,8 @@ namespace App1.Pages.TiposItensCardapio
 
         private void PreparaParaNovoTipoItemCardapio()
         {
-            //var novoId = dalTiposItensCardapio.GetAll().Max(x => x.Id) + 1;
-            //idItemCardapio.Text = novoId.ToString().Trim();
+            var novoId = dalTiposItensCardapio.GetAll().Max(x => x.TipoItemCardapioId) + 1;
+            idItemCardapio.Text = novoId.ToString().Trim();
             nome.Text = string.Empty;
             fototipoitemcardapio.Source = null;
         }
@@ -50,9 +52,8 @@ namespace App1.Pages.TiposItensCardapio
 
                 var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
                 {
-                    SaveToAlbum = true,
-                    Name = "tipoitem_" + idparafoto + "jpg",
-                    Directory = "App1"
+                    Directory = FileSystem.Current.LocalStorage.Name,
+                    Name = "tipoitem_" + idparafoto + ".jpg"
                 });
 
                 if (file == null)
@@ -60,12 +61,18 @@ namespace App1.Pages.TiposItensCardapio
                     return;
                 }
 
+                var stream = file.GetStream();
+                var memoryStream = new MemoryStream();
+                stream.CopyTo(memoryStream);
+
                 fototipoitemcardapio.Source = ImageSource.FromStream(() =>
                 {
-                    var stream = file.GetStream();
+                    var s = file.GetStream();
                     file.Dispose();
-                    return stream;
+                    return s;
                 });
+
+                bytesFoto = memoryStream.ToArray();
             };
         }
 
@@ -94,28 +101,40 @@ namespace App1.Pages.TiposItensCardapio
                     return;
                 }
 
-                //instruções de recuração de arquivo com base no caminho               
-                var getArquivoPcl = FileSystem.Current.GetFileFromPathAsync(file.Path);
-
-                //recupera o caminho raiz da aplicação
-                var rootFolder = FileSystem.Current.LocalStorage;
-
-                //caso a pasta fotos não exista ela é criada
-                var folderFoto = await rootFolder.CreateFolderAsync("Fotos", CreationCollisionOption.OpenIfExists);
-
-                //cria o arquivo referente a foto selecionada
-                var setArquivoPCL = folderFoto.CreateFileAsync(getArquivoPcl.Result.Name, CreationCollisionOption.ReplaceExisting);
-
-                //guarda o caminho referente a foto selecionada
-                caminhoArquivo = setArquivoPCL.Result.Path;
-
-                //recupera o arquivo selecionado e o atribui ao controle o formulario
+                var stream = file.GetStream();
+                var memoryStream = new MemoryStream();
+                stream.CopyTo(memoryStream);
                 fototipoitemcardapio.Source = ImageSource.FromStream(() =>
                 {
-                    var stream = file.GetStream();
+                    var s = file.GetStream();
                     file.Dispose();
-                    return stream;
+                    return s;
                 });
+
+                bytesFoto = memoryStream.ToArray();
+
+                //instruções de recuração de arquivo com base no caminho               
+                //var getArquivoPcl = FileSystem.Current.GetFileFromPathAsync(file.Path);
+
+                //recupera o caminho raiz da aplicação
+                //var rootFolder = FileSystem.Current.LocalStorage;
+
+                //caso a pasta fotos não exista ela é criada
+                //var folderFoto = await rootFolder.CreateFolderAsync("Fotos", CreationCollisionOption.OpenIfExists);
+
+                //cria o arquivo referente a foto selecionada
+                //var setArquivoPCL = folderFoto.CreateFileAsync(getArquivoPcl.Result.Name, CreationCollisionOption.ReplaceExisting);
+
+                //guarda o caminho referente a foto selecionada
+                //caminhoArquivo = setArquivoPCL.Result.Path;
+
+                //recupera o arquivo selecionado e o atribui ao controle o formulario
+                //fototipoitemcardapio.Source = ImageSource.FromStream(() =>
+                //{
+                  //  var stream = file.GetStream();
+                  //  file.Dispose();
+                  //  return stream;
+                //});
             };
         }
 
@@ -127,12 +146,11 @@ namespace App1.Pages.TiposItensCardapio
             }
             else
             {
-               //dalTiposItensCardapio.Add(new TipoItemCardapio()
-               // {
-               //     Id = Convert.ToUInt32(idItemCardapio.Text),
-               //     Nome = nome.Text,
-               //     CaminhoArquivoFoto = caminhoArquivo
-               // });
+                dalTiposItensCardapio.Add(new TipoItemCardapio()
+                {
+                    Nome = nome.Text,
+                    Foto = bytesFoto
+                });
 
                 PreparaParaNovoTipoItemCardapio();
             }
