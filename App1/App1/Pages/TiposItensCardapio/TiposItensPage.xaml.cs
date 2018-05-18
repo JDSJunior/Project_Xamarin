@@ -14,39 +14,35 @@ namespace App1.Pages.TiposItensCardapio
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TiposItensPage : ContentPage
 	{
-        private TipoItemCardapioDAL dalItensCardapio = new TipoItemCardapioDAL();
+        private TipoItemCardapioDAL dalTipoItensCardapio = new TipoItemCardapioDAL();
 
-        public TiposItensPage ()
+        public TiposItensPage()
 		{
 			InitializeComponent ();
-		}
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            listviewItensCardapio.ItemsSource = dalItensCardapio.GetAll();
+            //listviewItensCardapio.ItemsSource = dalTipoItensCardapio.GetAll();
         }
 
         public async void OnRemoverClick(object sender, EventArgs e)
         {
-            var mi = ((MenuItem)sender);
-            var item = mi.CommandParameter as TipoItemCardapio;
-            var opcao = await DisplayAlert("Confirmação de exclusão", "Confirma excluir o item " + item.Nome.ToUpper() + "?", "Sim", "Não");
-            if (opcao)
-            {
-                dalItensCardapio.DeleteById((long)item.TipoItemCardapioId);
-            }
+            //var mi = ((MenuItem)sender);
+            //var item = mi.CommandParameter as TipoItemCardapio;
+            //var opcao = await DisplayAlert("Confirmação de exclusão", "Confirma excluir o item " + item.Nome.ToUpper() + "?", "Sim", "Não");
+            //if (opcao)
+            //{
+            //    dalTipoItensCardapio.DeleteById((long)item.TipoItemCardapioId);
+            //}
 
-            listviewItensCardapio.ItemsSource = dalItensCardapio.GetAll();
+            //listviewItensCardapio.ItemsSource = dalTipoItensCardapio.GetAll();
         }
 
         public async void OnAlterarClick(object sender, EventArgs e)
         {
-            var mi = ((MenuItem)sender);
-            var item = mi.CommandParameter as TipoItemCardapio;
-            await Navigation.PushModalAsync(new TiposItensCardapioEditPage(item));
+            //var mi = ((MenuItem)sender);
+            //var item = mi.CommandParameter as TipoItemCardapio;
+            //await Navigation.PushModalAsync(new TiposItensCardapioEditPage(item));
         }
 
 
-	}
+    }
 }

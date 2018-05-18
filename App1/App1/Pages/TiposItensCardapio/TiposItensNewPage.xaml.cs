@@ -23,11 +23,11 @@ namespace App1.Pages.TiposItensCardapio
 
 		public TiposItensNewPage ()
 		{
-			InitializeComponent ();
+            InitializeComponent();
             PreparaParaNovoTipoItemCardapio();
             RegistraClickBotaoCamera(idItemCardapio.Text.Trim());
             RegistraClickBotaoAlbum();
-		}
+        }
 
 
         private void PreparaParaNovoTipoItemCardapio()
