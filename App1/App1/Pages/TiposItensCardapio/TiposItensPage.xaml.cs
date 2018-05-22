@@ -14,12 +14,16 @@ namespace App1.Pages.TiposItensCardapio
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TiposItensPage : ContentPage
 	{
-        private TipoItemCardapioDAL dalTipoItensCardapio = new TipoItemCardapioDAL();
+        //private TipoItemCardapioDAL dalTipoItensCardapio = new TipoItemCardapioDAL();
 
         public TiposItensPage()
 		{
 			InitializeComponent ();
+        }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
             //listviewItensCardapio.ItemsSource = dalTipoItensCardapio.GetAll();
         }
 

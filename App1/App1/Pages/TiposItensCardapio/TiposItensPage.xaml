@@ -17,10 +17,10 @@
                 <ListView.ItemTemplate>
                 <DataTemplate>
                         <ViewCell>
-                        <StackLayout Padding="5,0,5,0" Orientation="Horizontal">
+                        <!--<StackLayout Padding="5,0,5,0" Orientation="Horizontal">
                                 <Image Source="{Binding CaminhoArquivoFoto}"/>
                                 <Label Text="{Binding Nome}" TextColor="Blue" FontSize="Large" VerticalOptions="Center"/>
-                        </StackLayout>
+                        </StackLayout>-->
                             <ViewCell.ContextActions>
                                 <MenuItem Clicked="OnAlterarClick" CommandParameter="{Binding}" Text="Alterar"/>
                                 <MenuItem Clicked="OnRemoverClick" CommandParameter="{Binding}" Text="Remover" IsDestructive="True"/>
