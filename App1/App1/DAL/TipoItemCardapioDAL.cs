@@ -12,7 +12,8 @@ namespace App1.DAL
 {
     public class TipoItemCardapioDAL
     {
-        private SQLiteConnection sqlConnection;
+
+        public SQLiteConnection sqlConnection;
 
         public TipoItemCardapioDAL()
         {
