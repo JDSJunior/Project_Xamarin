@@ -5,8 +5,9 @@ using System.Text;
 
 namespace App1.Infraestructure
 {
-    public interface IRule
+    public class TasksDB : IRule
     {
-        int Id { get; set; }
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
     }
 }

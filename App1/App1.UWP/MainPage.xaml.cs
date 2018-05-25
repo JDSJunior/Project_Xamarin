@@ -21,6 +21,8 @@ namespace App1.UWP
         {
             this.InitializeComponent();
 
+            Infraestructure.DataBase.Root = 
+
             LoadApplication(new App1.App());
         }
     }

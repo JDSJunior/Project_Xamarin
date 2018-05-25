@@ -23,6 +23,9 @@ namespace App1.Droid
             await CrossMedia.Current.Initialize();
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+
+            App1.Infraestructure.DataBase.Root = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+
             LoadApplication(new App());
         }
     }

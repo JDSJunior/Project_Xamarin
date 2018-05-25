@@ -11,8 +11,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using App1.Infraestructure;
-using SQLite.Net;
-using SQLite.Net.Platform.XamarinAndroid;
+using SQLite;
 
 namespace App1.Droid
 {
@@ -23,7 +22,7 @@ namespace App1.Droid
             var dbname = "RestauranteDB.db3";
             string documentsFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             string path = Path.Combine(documentsFolder, dbname);
-            var platform = new SQLitePlatformAndroid();
+            var platform = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             return new SQLiteConnection(platform, path);
         }
     }

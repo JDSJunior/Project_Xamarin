@@ -1,6 +1,6 @@
 ﻿using App1.Infraestructure;
 using App1.Models;
-using SQLite.Net;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,6 +17,7 @@ namespace App1.DAL
 
         public TipoItemCardapioDAL()
         {
+            
             this.sqlConnection = DependencyService.Get<IDataBaseConnection>().DbConnection();
             this.sqlConnection.CreateTable<TipoItemCardapio>();
         }
