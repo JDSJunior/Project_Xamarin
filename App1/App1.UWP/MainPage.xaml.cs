@@ -20,10 +20,10 @@ namespace App1.UWP
         public MainPage()
         {
             this.InitializeComponent();
-
-            Infraestructure.DataBase.Root = 
-
+ 
             LoadApplication(new App1.App());
+
+            App1.Infraestructure.DataBase.Root = Windows.Storage.ApplicationData.Current.LocalFolder.Path;
         }
     }
 }

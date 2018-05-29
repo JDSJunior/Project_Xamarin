@@ -10,6 +10,5 @@ namespace App1.Models
     {
         public string Nome { get; set; }
         public byte[] Foto { get; set; }
-
     }
 }

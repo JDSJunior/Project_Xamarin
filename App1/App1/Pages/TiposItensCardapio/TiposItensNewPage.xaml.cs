@@ -1,4 +1,5 @@
 ﻿using App1.DAL;
+using App1.Infraestructure;
 using App1.Models;
 using PCLStorage;
 using Plugin.Media;
@@ -17,9 +18,8 @@ namespace App1.Pages.TiposItensCardapio
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TiposItensNewPage : ContentPage
 	{
-        private TipoItemCardapioDAL dalTiposItensCardapio = new TipoItemCardapioDAL();
+        private DataBase dataBase = new DataBase();
         private byte[] bytesFoto;
-        private string caminhoArquivo;
 
 		public TiposItensNewPage ()
 		{
@@ -29,13 +29,12 @@ namespace App1.Pages.TiposItensCardapio
             RegistraClickBotaoAlbum();
         }
 
-
         private void PreparaParaNovoTipoItemCardapio()
         {
-            var novoId = dalTiposItensCardapio.GetAll().Max(x => x.TipoItemCardapioId) + 1;
-            idItemCardapio.Text = novoId.ToString().Trim();
-            nome.Text = string.Empty;
-            fototipoitemcardapio.Source = null;
+             var novoId = dataBase.GetAll<TipoItemCardapio>().Max(x => x.Id) + 1;
+             idItemCardapio.Text = novoId.ToString().Trim();
+             nome.Text = string.Empty;
+             fototipoitemcardapio.Source = null; 
         }
 
         private void RegistraClickBotaoCamera(string idparafoto)
@@ -78,7 +77,7 @@ namespace App1.Pages.TiposItensCardapio
 
         private void RegistraClickBotaoAlbum()
         {
-            //criação do metodo anonimo para a captura doevento click do botão
+            //criação do metodo anonimo para a captura do evento click do botão
             BtnAlbum.Clicked += async (sender, args) =>
             {
 
@@ -91,7 +90,7 @@ namespace App1.Pages.TiposItensCardapio
                     return;
                 }
 
-                //metodo que hbilita o album e permite a selecão
+                //metodo que habilita o album e permite a selecão
                 var file = await CrossMedia.Current.PickPhotoAsync();
 
                 //caso o usuario não tenha selecionado nenhua foto, clicando no botão cancelar
@@ -146,7 +145,7 @@ namespace App1.Pages.TiposItensCardapio
             }
             else
             {
-                dalTiposItensCardapio.Add(new TipoItemCardapio()
+                dataBase.SaveItem(new TipoItemCardapio()
                 {
                     Nome = nome.Text,
                     Foto = bytesFoto

@@ -1,4 +1,5 @@
 ﻿using App1.DAL;
+using App1.Infraestructure;
 using App1.Models;
 using PCLStorage;
 using Plugin.Media;
@@ -16,8 +17,9 @@ namespace App1.Pages.TiposItensCardapio
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TiposItensCardapioEditPage : ContentPage
     {
-        private TipoItemCardapio tipoItemCardapio;
+        private TipoItemCardapio tipoItemCardapio = new TipoItemCardapio();
         private string caminhoArquivo;
+        private DataBase db = new DataBase();
         //private TipoItemCardapioDAL dalTiposItensCardapio = TipoItemCardapioDAL.GetInstance();
         
 
@@ -25,14 +27,14 @@ namespace App1.Pages.TiposItensCardapio
         {
             InitializeComponent();
             PopularFormulario(tipoItemCardapio);
-            RegistraClickBotaoCamera(idtipoitemcardapio.Text.Trim());
-            RegistraClickBotaoAlbum();
+            //RegistraClickBotaoCamera(idtipoitemcardapio.Text.Trim());
+            //RegistraClickBotaoAlbum();
         }
 
         private void PopularFormulario(TipoItemCardapio tipoItemCardapio)
         {
             this.tipoItemCardapio = tipoItemCardapio;
-            //idtipoitemcardapio.Text = tipoItemCardapio.Id.ToString();
+            idtipoitemcardapio.Text = tipoItemCardapio.Id.ToString();
             nome.Text = tipoItemCardapio.Nome;
             //caminhoArquivo = tipoItemCardapio.CaminhoArquivoFoto;
             //fototipoitemcardapio.Source = ImageSource.FromFile(tipoItemCardapio.CaminhoArquivoFoto);
@@ -112,7 +114,7 @@ namespace App1.Pages.TiposItensCardapio
             {
                 this.tipoItemCardapio.Nome = nome.Text;
                 //this.tipoItemCardapio.CaminhoArquivoFoto = caminhoArquivo;
-                //dalTiposItensCardapio.Update(this.tipoItemCardapio);
+                db.Update<TipoItemCardapio>(this.tipoItemCardapio);
                 await Navigation.PopModalAsync();
             }
         }
