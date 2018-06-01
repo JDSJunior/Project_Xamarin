@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -25,19 +26,19 @@ namespace App1.Pages.TiposItensCardapio
 		{
             InitializeComponent();
             PreparaParaNovoTipoItemCardapio();
-            RegistraClickBotaoCamera(idItemCardapio.Text.Trim());
+            RegistraClickBotaoCamera();
             RegistraClickBotaoAlbum();
         }
 
         private void PreparaParaNovoTipoItemCardapio()
         {
-             var novoId = dataBase.GetAll<TipoItemCardapio>().Max(x => x.Id) + 1;
-             idItemCardapio.Text = novoId.ToString().Trim();
-             nome.Text = string.Empty;
-             fototipoitemcardapio.Source = null; 
+            var novoId = dataBase.GetAll<TipoItemCardapio>().Max(X => X.Id) + 1;
+            idItemCardapio.Text = novoId.ToString();
+            nome.Text = string.Empty;
+            fototipoitemcardapio.Source = null;
         }
 
-        private void RegistraClickBotaoCamera(string idparafoto)
+        private void RegistraClickBotaoCamera()
         {
             BtnCamera.Clicked += async (sender, args) =>
             {
@@ -45,14 +46,13 @@ namespace App1.Pages.TiposItensCardapio
 
                 if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
                 {
-                    await DisplayAlert("Não Existe Camêra", "A camêra não está disponivrl", "Ok");
+                    await DisplayAlert("Não Existe Camêra", "A camêra não está disponivel", "Ok");
                     return;
                 }
 
                 var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
                 {
                     Directory = FileSystem.Current.LocalStorage.Name,
-                    Name = "tipoitem_" + idparafoto + ".jpg"
                 });
 
                 if (file == null)
@@ -112,7 +112,7 @@ namespace App1.Pages.TiposItensCardapio
 
                 bytesFoto = memoryStream.ToArray();
 
-                //instruções de recuração de arquivo com base no caminho               
+                //instruções de recuração de arquivo com base no caminho
                 //var getArquivoPcl = FileSystem.Current.GetFileFromPathAsync(file.Path);
 
                 //recupera o caminho raiz da aplicação
@@ -125,15 +125,15 @@ namespace App1.Pages.TiposItensCardapio
                 //var setArquivoPCL = folderFoto.CreateFileAsync(getArquivoPcl.Result.Name, CreationCollisionOption.ReplaceExisting);
 
                 //guarda o caminho referente a foto selecionada
-                //caminhoArquivo = setArquivoPCL.Result.Path;
+                //var caminhoArquivo = setArquivoPCL.Result.Path;
 
                 //recupera o arquivo selecionado e o atribui ao controle o formulario
-                //fototipoitemcardapio.Source = ImageSource.FromStream(() =>
-                //{
-                  //  var stream = file.GetStream();
-                  //  file.Dispose();
-                  //  return stream;
-                //});
+                fototipoitemcardapio.Source = ImageSource.FromStream(() =>
+                {
+                    var stm = file.GetStream();
+                    file.Dispose();
+                    return stm;
+                });
             };
         }
 

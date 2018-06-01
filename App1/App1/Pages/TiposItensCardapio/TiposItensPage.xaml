@@ -11,7 +11,7 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout Padding="5,20,5,20">
-                <Label Text="Tipos de Itens Cardápio" VerticalOptions="Center" Font="20" HorizontalOptions="Center"/>
+                <Label Text="Tipos de Itens Cardápio" VerticalOptions="Center" Font="20" HorizontalOptions="Center" x:Name="Title"/>
             </StackLayout>
             <ListView x:Name="listviewItensCardapio" RowHeight="60">
                 <ListView.ItemTemplate>

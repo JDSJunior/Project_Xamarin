@@ -14,9 +14,7 @@ namespace App1.Pages.TiposItensCardapio
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TiposItensPage : ContentPage
-	{
-        //private TipoItemCardapioDAL dalTipoItensCardapio = new TipoItemCardapioDAL();
-
+    {
         private DataBase bd = new DataBase();
 
         public TiposItensPage()
