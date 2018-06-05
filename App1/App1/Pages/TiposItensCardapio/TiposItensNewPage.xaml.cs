@@ -20,20 +20,20 @@ namespace App1.Pages.TiposItensCardapio
 	public partial class TiposItensNewPage : ContentPage
 	{
         private DataBase dataBase = new DataBase();
-        private byte[] bytesFoto;
+        //private byte[] bytesFoto = null;
 
-		public TiposItensNewPage ()
+        public TiposItensNewPage ()
 		{
             InitializeComponent();
-            PreparaParaNovoTipoItemCardapio();
+            //PreparaParaNovoTipoItemCardapio();
             RegistraClickBotaoCamera();
             RegistraClickBotaoAlbum();
         }
 
         private void PreparaParaNovoTipoItemCardapio()
         {
-            var novoId = dataBase.GetAll<TipoItemCardapio>().Max(X => X.Id) + 1;
-            idItemCardapio.Text = novoId.ToString();
+            //var novoId = dataBase.GetAll<TipoItemCardapio>().Max(X => X.Id) + 1;
+            //idItemCardapio.Text = novoId.ToString();
             nome.Text = string.Empty;
             fototipoitemcardapio.Source = null;
         }
@@ -71,7 +71,7 @@ namespace App1.Pages.TiposItensCardapio
                     return s;
                 });
 
-                bytesFoto = memoryStream.ToArray();
+                //bytesFoto = memoryStream.ToArray();
             };
         }
 
@@ -110,7 +110,7 @@ namespace App1.Pages.TiposItensCardapio
                     return s;
                 });
 
-                bytesFoto = memoryStream.ToArray();
+                //bytesFoto = memoryStream.ToArray();
 
                 //instruções de recuração de arquivo com base no caminho
                 //var getArquivoPcl = FileSystem.Current.GetFileFromPathAsync(file.Path);
@@ -137,7 +137,7 @@ namespace App1.Pages.TiposItensCardapio
             };
         }
 
-        public void BtnGravarClick(object sencer, EventArgs e)
+        public void BtnGravarClick(object sender, EventArgs args)
         {
             if (nome.Text.Trim() == string.Empty)
             {
@@ -145,15 +145,14 @@ namespace App1.Pages.TiposItensCardapio
             }
             else
             {
-                dataBase.SaveItem(new TipoItemCardapio()
-                {
-                    Nome = nome.Text,
-                    Foto = bytesFoto
-                });
+                //dataBase.SaveItem(new TipoItemCardapio()
+                //{
+                //    Nome = nome.Text,
+                //    Foto = bytesFoto
+                //});
 
                 PreparaParaNovoTipoItemCardapio();
             }
         }
-
     }
 }
