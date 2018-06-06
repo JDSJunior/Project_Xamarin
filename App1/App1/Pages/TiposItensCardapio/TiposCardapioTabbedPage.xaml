@@ -4,7 +4,7 @@
             xmlns:ep="clr-namespace:App1.Pages.TiposItensCardapio; assembly=App1"
              x:Class="App1.Pages.TiposItensCardapio.TiposCardapioTabbedPage">
     <TabbedPage.Children>
-        <!--<ep:TiposItensPage Title="Tipos De Itens" x:Name="listagem"/>-->
+        <ep:TiposItensPage Title="Tipos De Itens" x:Name="listagem"/>
         <ep:TiposItensNewPage Title="Inserir Novo Item" x:Name="inserir"/>
     </TabbedPage.Children>
 </TabbedPage>
