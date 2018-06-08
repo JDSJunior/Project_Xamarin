@@ -20,20 +20,20 @@ namespace App1.Pages.TiposItensCardapio
 	public partial class TiposItensNewPage : ContentPage
 	{
         private DataBase dataBase = new DataBase();
-        //private byte[] bytesFoto = null;
+        private byte[] bytesFoto = null;
 
         public TiposItensNewPage ()
 		{
             InitializeComponent();
-            //PreparaParaNovoTipoItemCardapio();
+            PreparaParaNovoTipoItemCardapio();
             RegistraClickBotaoCamera();
             RegistraClickBotaoAlbum();
         }
 
         private void PreparaParaNovoTipoItemCardapio()
         {
-            //var novoId = dataBase.GetAll<TipoItemCardapio>().Max(X => X.Id) + 1;
-            //idItemCardapio.Text = novoId.ToString();
+            var novoId = dataBase.GetAll<TipoItemCardapio>().Max(X => X.Id) + 1;
+            idItemCardapio.Text = novoId.ToString();
             nome.Text = string.Empty;
             fototipoitemcardapio.Source = null;
         }
@@ -71,7 +71,7 @@ namespace App1.Pages.TiposItensCardapio
                     return s;
                 });
 
-                //bytesFoto = memoryStream.ToArray();
+                bytesFoto = memoryStream.ToArray();
             };
         }
 
@@ -145,13 +145,15 @@ namespace App1.Pages.TiposItensCardapio
             }
             else
             {
-                //dataBase.SaveItem(new TipoItemCardapio()
-                //{
-                //    Nome = nome.Text,
-                //    Foto = bytesFoto
-                //});
+                dataBase.SaveItem(new TipoItemCardapio()
+                {
+                    Nome = nome.Text,
+                    Foto = bytesFoto
+                });
 
                 PreparaParaNovoTipoItemCardapio();
+
+
             }
         }
     }
