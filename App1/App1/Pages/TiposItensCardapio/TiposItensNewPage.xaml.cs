@@ -32,8 +32,6 @@ namespace App1.Pages.TiposItensCardapio
 
         private void PreparaParaNovoTipoItemCardapio()
         {
-            var novoId = dataBase.GetAll<TipoItemCardapio>().Max(X => X.Id) + 1;
-            idItemCardapio.Text = novoId.ToString();
             nome.Text = string.Empty;
             fototipoitemcardapio.Source = null;
         }
@@ -141,7 +139,7 @@ namespace App1.Pages.TiposItensCardapio
         {
             if (nome.Text.Trim() == string.Empty)
             {
-                this.DisplayAlert("Erro,", "Você precisa informar o nome para o novo tipo de item do cardápio.", "OK");
+                this.DisplayAlert("Erro.", "Você precisa informar o nome para o novo tipo de item do cardápio.", "OK");
             }
             else
             {
@@ -151,8 +149,11 @@ namespace App1.Pages.TiposItensCardapio
                     Foto = bytesFoto
                 });
 
+                DisplayAlert("Confirmação.", "O item " + nome.Text.ToUpper() + " foi salvo!", "OK");
+
                 PreparaParaNovoTipoItemCardapio();
 
+                Navigation.PushAsync(new TiposCardapioTabbedPage());
 
             }
         }

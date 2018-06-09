@@ -27,8 +27,7 @@
                                     <ColumnDefinition Width="20*"/>
                                 </Grid.ColumnDefinitions>
                                 <Image Source="icone_tipoitemcardapio.png" Grid.Row="0" Grid.Column="0"/>
-                                <Label Grid.Row="0" Grid.Column="1" Text="Novo Tipo de Item" Font="24" TextColor="Blue" HorizontalOptions="Start" VerticalOptions="Center"/>
-                                <Label Grid.Row="0" Grid.Column="2" TextColor="Blue" x:Name="idItemCardapio" VerticalOptions="Center"/>
+                                <Label Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="3" Text="Novo Tipo de Item" Font="24" TextColor="Blue" HorizontalOptions="Center" VerticalOptions="Center"/>
                             </Grid>
                         </StackLayout>
                     </Frame>

@@ -20,11 +20,6 @@ namespace App1.Pages.TiposItensCardapio
         public TiposItensPage()
 		{
             InitializeComponent();
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
             listviewItensCardapio.ItemsSource = bd.GetAll<TipoItemCardapio>();
         }
 
