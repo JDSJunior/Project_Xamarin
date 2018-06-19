@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:ep="clr-namespace:App1.Pages; assembly=App1"
+            x:Class="App1.Pages.Menu.MenuTabbedPage" >
+    <TabbedPage.Children>
+        <NavigationPage Title="Navegar">
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                </OnPlatform>
+            </NavigationPage.Icon>
+            <x:Arguments>
+                <ep:EntregadoresPage />
+            </x:Arguments>
+        </NavigationPage>
+
+        <!--<NavigationPage Title="Sobre">
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                </OnPlatform>
+            </NavigationPage.Icon>
+            <x:Arguments>
+                <ep:AboutPage />
+            </x:Arguments>
+        </NavigationPage> -->
+    </TabbedPage.Children>
+</TabbedPage>

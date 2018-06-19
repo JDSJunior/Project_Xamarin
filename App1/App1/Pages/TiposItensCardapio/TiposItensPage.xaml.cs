@@ -42,7 +42,5 @@ namespace App1.Pages.TiposItensCardapio
             var item = mi.CommandParameter as TipoItemCardapio;
             await Navigation.PushModalAsync(new TiposItensCardapioEditPage(item));
         }
-
-
     }
 }
