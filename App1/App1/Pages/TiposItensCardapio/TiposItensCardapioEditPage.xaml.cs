@@ -5,6 +5,7 @@ using PCLStorage;
 using Plugin.Media;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,27 +19,27 @@ namespace App1.Pages.TiposItensCardapio
     public partial class TiposItensCardapioEditPage : ContentPage
     {
         private TipoItemCardapio tipoItemCardapio = new TipoItemCardapio();
-        private string caminhoArquivo;
         private DataBase db = new DataBase();
-        //private TipoItemCardapioDAL dalTiposItensCardapio = TipoItemCardapioDAL.GetInstance();
-        
 
         public TiposItensCardapioEditPage(TipoItemCardapio tipoItemCardapio)
         {
             InitializeComponent();
             PopularFormulario(tipoItemCardapio);
-            //RegistraClickBotaoCamera(idtipoitemcardapio.Text.Trim());
-            //RegistraClickBotaoAlbum();
+            RegistraClickBotaoCamera();
+            RegistraClickBotaoAlbum();
         }
+
+
 
         private void PopularFormulario(TipoItemCardapio tipoItemCardapio)
         {
             this.tipoItemCardapio = tipoItemCardapio;
             idtipoitemcardapio.Text = tipoItemCardapio.Id.ToString();
             nome.Text = tipoItemCardapio.Nome;
-            //caminhoArquivo = tipoItemCardapio.CaminhoArquivoFoto;
-            //fototipoitemcardapio.Source = ImageSource.FromFile(tipoItemCardapio.CaminhoArquivoFoto);
+            fototipoitemcardapio.Source = ImageSource.FromStream(() => new MemoryStream(tipoItemCardapio.Foto));
         }
+
+
 
         private void RegistraClickBotaoAlbum()
         {
@@ -60,22 +61,24 @@ namespace App1.Pages.TiposItensCardapio
                 var arquivoLido = getArquivoPCL.Result.ReadAllTextAsync();
                 var arquivoEscrito = setArquivoPCL.Result.WriteAllTextAsync(arquivoLido.Result);
 
-                caminhoArquivo = setArquivoPCL.Result.Path;
-
                 if (file == null)
                 {
                     return;
                 }
+
+                var stream = file.GetStream();
+                var memoryStream = new MemoryStream();
+                stream.CopyTo(memoryStream);
                 fototipoitemcardapio.Source = ImageSource.FromStream(() =>
                 {
-                    var stream = file.GetStream();
+                    var s = file.GetStream();
                     file.Dispose();
-                    return stream;
+                    return s;
                 });
             };
         }
 
-        private void RegistraClickBotaoCamera(string idparafoto)
+        private void RegistraClickBotaoCamera()
         {
             BtnCamera.Clicked += async (sender, args) =>
             {
@@ -90,7 +93,6 @@ namespace App1.Pages.TiposItensCardapio
                 var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
                 {
                     Directory = FileSystem.Current.LocalStorage.Name,
-                    Name = "tipoitem" + idparafoto.Trim() + ".jpg"
                 });
 
                 if (file == null)
@@ -98,9 +100,18 @@ namespace App1.Pages.TiposItensCardapio
                     return;
                 }
 
-                fototipoitemcardapio.Source = ImageSource.FromFile(file.Path);
+                var stream = file.GetStream();
+                var memoryStream = new MemoryStream();
+                stream.CopyTo(memoryStream);
 
-                caminhoArquivo = file.Path;
+                tipoItemCardapio.Foto = File.ReadAllBytes(file.Path);
+
+                fototipoitemcardapio.Source = ImageSource.FromStream(() =>
+                {
+                    var s = file.GetStream();
+                    file.Dispose();
+                    return s;
+                });
             };
         }
 
@@ -112,10 +123,13 @@ namespace App1.Pages.TiposItensCardapio
             }
             else
             {
-                this.tipoItemCardapio.Nome = nome.Text;
-                //this.tipoItemCardapio.CaminhoArquivoFoto = caminhoArquivo;
-                db.Update<TipoItemCardapio>(this.tipoItemCardapio);
-                await Navigation.PopModalAsync();
+                tipoItemCardapio.Nome = nome.Text;
+
+                db.Update<TipoItemCardapio>(tipoItemCardapio);
+
+                await DisplayAlert("Confirmação.", "O item " + nome.Text.ToUpper() + " foi salvo!", "OK");
+
+                await Navigation.PushModalAsync(new TiposItensPage());
             }
         }
     }

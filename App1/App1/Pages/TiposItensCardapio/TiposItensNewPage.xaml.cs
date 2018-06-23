@@ -69,7 +69,7 @@ namespace App1.Pages.TiposItensCardapio
                     return s;
                 });
 
-                bytesFoto = memoryStream.ToArray();
+                
             };
         }
 

@@ -22,6 +22,7 @@ namespace App1.Pages
 			InitializeComponent ();
 
             ListViewEntregadores.ItemsSource = dalEntregador.GetAll();
+
 		}
 	}
 }

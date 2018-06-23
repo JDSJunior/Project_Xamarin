@@ -15,6 +15,13 @@ namespace App1.Pages.ItensCardapio
         public ItensCardapioPage ()
         {
             InitializeComponent();
+
+            btnNovoItem.Clicked += BtnNovoItemClick;
+        }
+
+        private async void BtnNovoItemClick(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ItensCardapioNewPage());
         }
     }
 }

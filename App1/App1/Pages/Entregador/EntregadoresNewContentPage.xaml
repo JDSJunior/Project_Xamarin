@@ -25,7 +25,7 @@
                     valor do id que será atribuido ao novo entregador. 
                     Este frame vai na primeria linha e primeira coluna do Grid-->
                     <Frame Grid.Row="0" Grid.Column="0" OutlineColor="Black" 
-                           BackgroundColor="Yellow" HasShadow="False" Padding="5,5,5,5">
+                           BackgroundColor="#0099FF" HasShadow="False" Padding="5,5,5,5">
                         <StackLayout>
                             
                             <!--3 Definição do grid para o frame-->
@@ -42,7 +42,7 @@
                                 <!--4 Inserção de uma imagen e dois labels no grid do frame -->
                                 <Image Source="icone_entregador.png" Grid.Row="0" Grid.Column="0"/>
                                 <Label Grid.Row="0" Grid.Column="1" Text="Novo Entregador" Font="24" 
-                                       TextColor="Blue" HorizontalOptions="Start" VerticalOptions="Center"/>
+                                       TextColor="White" HorizontalOptions="Start" VerticalOptions="Center"/>
                                 <Label Grid.Row="0" Grid.Column="2" Text="Id" HorizontalOptions="End" Font="Bold, 24" TextColor="Blue" x:Name="identregador" VerticalOptions="Center"/>
                             </Grid>
                         </StackLayout>

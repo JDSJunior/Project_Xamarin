@@ -8,14 +8,7 @@
             <ListView x:Name="ListViewEntregadores" HasUnevenRows="True" SeparatorVisibility="Default" SeparatorColor="Blue">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Padding="5,0,5,0" Orientation="Vertical">
-                                <Label Text="Id:"/>
-                                <Label Text= "{Binding Id}" TextColor="Black" FontSize="Medium"/>
-                                <Label Text="{Binding Nome}" TextColor="Blue" FontSize="Large"/>
-                                <Label Text="{Binding Telefone}" TextColor="Green" FontSize="Small"/>
-                            </StackLayout>
-                        </ViewCell>
+                        <TextCell Text="Nome" Detail="{Binding Nome}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

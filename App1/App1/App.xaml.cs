@@ -1,5 +1,4 @@
 ﻿using App1.Pages;
-using App1.Pages.Menu;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +14,7 @@ namespace App1
 		{
 			InitializeComponent();
 
-			MainPage = new NavigationPage(new MenuTabbedPage());
+			MainPage = new NavigationPage(new MenuPage());
 		}
 
 		protected override void OnStart ()
