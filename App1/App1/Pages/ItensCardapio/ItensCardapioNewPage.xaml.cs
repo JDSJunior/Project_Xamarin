@@ -16,5 +16,11 @@ namespace App1.Pages.ItensCardapio
 		{
 			InitializeComponent ();
 		}
-	}
+
+        
+        private async void OnTapLookForTipos(object sender, EventArgs args)
+        {
+            await Navigation.PushAsync(new TiposDeItensCardapioSearchPage(idTipo, nomeTipo));
+        }
+    }
 }

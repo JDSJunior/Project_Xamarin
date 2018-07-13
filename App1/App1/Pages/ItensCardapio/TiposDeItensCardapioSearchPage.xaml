@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App1.Pages.ItensCardapio.TiposDeItensCardapioSearchPage"
+             Title="Seleção de tipo item">
+    <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Padding="5, 20, 5, 20">
+        <SearchBar Placeholder="Digite o nome do tipo ..."
+                   TextColor="Black"/>
+        <ListView x:Name="lvTipos" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical">
+                            <Label Text="{Binding TipoItemCardapioId}" TextColor="Blue" FontSize="0"/>
+                            <Label Text="{Binding Nome}" TextColor="Blue" FontSize="Large"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

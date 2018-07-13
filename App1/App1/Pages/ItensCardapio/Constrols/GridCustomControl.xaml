@@ -11,7 +11,11 @@
                 <RowDefinition Height="90"/>
                 <RowDefinition>
                     <RowDefinition.Height>
-                        <OnPlatform x:TypeArguments="GridLength" Android="170" iOS="190"/>
+                        <OnPlatform x:TypeArguments="GridLength">
+                            <On Platform="Android" Value="170"/>
+                            <On Platform="iOS" Value="190"/>
+                            <On Platform="UWP" Value="140"/>
+                        </OnPlatform>
                     </RowDefinition.Height>
                 </RowDefinition>
                 <RowDefinition Height="Auto"/>
@@ -33,8 +37,14 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Text="" x:Name="idTipo" Grid.Row="0" Grid.Column="0" WidthRequest="0"/>
-                    <Label Text="Selecione o tipo do item" x:Name="nomeTipo" Grid.Row="0" Grid.Column="1"/>
+                    <Label Text="Selecione o tipo do item" x:Name="nomeTipo" Grid.Row="0" Grid.Column="1" />
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnTapLookForTipos" NumberOfTapsRequired="1"/>
+                    </Label.GestureRecognizers>
                     <Label Text=">" HorizontalOptions="End" Grid.Row="0" Grid.Column="2" BackgroundColor="Gray"/>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnTapLookForTipos" NumberOfTapsRequired="1"/>
+                    </Label.GestureRecognizers>
                 </Grid>
                 <StackLayout HeightRequest="1" BackgroundColor="Black" Padding="0"/>
             </StackLayout>
@@ -59,12 +69,20 @@
                     <Grid.RowDefinitions>
                         <RowDefinition>
                             <RowDefinition.Height>
-                                <OnPlatform x:TypeArguments="GridLength" Android="130" iOS="170"/>
+                                <OnPlatform x:TypeArguments="GridLength">
+                                    <On Platform="Android" Value="130"/>
+                                    <On Platform="iOS" Value="170"/>
+                                    <On Platform="UWP" Value="140"/>
+                                </OnPlatform>
                             </RowDefinition.Height>
                         </RowDefinition>
                         <RowDefinition>
                             <RowDefinition.Height>
-                                <OnPlatform x:TypeArguments="GridLength" Android="40" iOS="20"/>
+                                <OnPlatform x:TypeArguments="GridLength">
+                                    <On Platform="Android" Value="40"/>
+                                    <On Platform="iOS" Value="20"/>
+                                    <On Platform="UWP" Value="30"/>
+                                </OnPlatform>
                             </RowDefinition.Height>
                         </RowDefinition>
                     </Grid.RowDefinitions>

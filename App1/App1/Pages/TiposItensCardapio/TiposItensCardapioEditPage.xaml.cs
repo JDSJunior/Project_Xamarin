@@ -34,7 +34,7 @@ namespace App1.Pages.TiposItensCardapio
         private void PopularFormulario(TipoItemCardapio tipoItemCardapio)
         {
             this.tipoItemCardapio = tipoItemCardapio;
-            idtipoitemcardapio.Text = tipoItemCardapio.Id.ToString();
+            //idtipoitemcardapio.Text = tipoItemCardapio.Id.ToString();
             nome.Text = tipoItemCardapio.Nome;
             fototipoitemcardapio.Source = ImageSource.FromStream(() => new MemoryStream(tipoItemCardapio.Foto));
         }
@@ -124,12 +124,13 @@ namespace App1.Pages.TiposItensCardapio
             else
             {
                 tipoItemCardapio.Nome = nome.Text;
+                
 
                 db.Update<TipoItemCardapio>(tipoItemCardapio);
 
                 await DisplayAlert("Confirmação.", "O item " + nome.Text.ToUpper() + " foi salvo!", "OK");
 
-                await Navigation.PushModalAsync(new TiposItensPage());
+                await Navigation.PopModalAsync();
             }
         }
     }
