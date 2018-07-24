@@ -1,4 +1,5 @@
-﻿using SQLite;
+﻿using App1.Infraestructure;
+using SQLite;
 using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
@@ -6,10 +7,8 @@ using System.Text;
 
 namespace App1.Models
 {
-    public class ItemCardapio
+    public class ItemCardapio : TasksDB
     {
-        [PrimaryKey, AutoIncrement]
-        public int ItemCardapioId { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
         public double Preco { get; set; }
@@ -29,12 +28,12 @@ namespace App1.Models
                 return false;
             }
 
-            return (ItemCardapioId.Equals(itemCardapio.ItemCardapioId));
+            return (Id.Equals(itemCardapio.Id));
         }
 
         public override int GetHashCode()
         {
-            return ItemCardapioId.GetHashCode();
+            return Id.GetHashCode();
         }
     }
 }

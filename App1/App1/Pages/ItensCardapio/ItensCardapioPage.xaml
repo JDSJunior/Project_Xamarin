@@ -32,7 +32,9 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
 
-            <ListView Grid.Row="0" Grid.Column="0" x:Name="lvItensCardapio" BackgroundColor="#ffffe6">
+            <ListView Grid.Row="0" Grid.Column="0" x:Name="lvItensCardapio" BackgroundColor="#ffffe6"
+                      HasUnevenRows="True" GroupDisplayBinding="{Binding Key.Nome}" GroupShortNameBinding="{Binding Key.TipoItem.Cardapio}"
+                      IsGroupingEnabled="True">
                 <ListView.ItemTemplate BackgroundColor="#ffffe6">
                     <DataTemplate>
                         <ViewCell>
@@ -42,7 +44,7 @@
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="50*"/>
+                                    <ColumnDefinition Width="50"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="100"/>
                                 </Grid.ColumnDefinitions>
@@ -61,10 +63,10 @@
                 </ListView.ItemTemplate>
                 <ListView.GroupHeaderTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                        <ViewCell >
+                            <StackLayout BackgroundColor="CadetBlue" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                                 <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                                    <Label Text="{Binding Key.Nome}" FontSize="Large" TextColor="#003300" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+                                    <Label Text="{Binding Key.Nome}" TextColor="White" FontSize="Large"  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
                                 </Grid>
                             </StackLayout>
                         </ViewCell>

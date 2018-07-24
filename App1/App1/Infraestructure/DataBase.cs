@@ -1,5 +1,6 @@
 ﻿using App1.Models;
 using SQLite;
+using SQLiteNetExtensions.Extensions;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,13 +13,14 @@ namespace App1.Infraestructure
     {
         SQLiteConnection Connection;
         public static string Root;
-        
+
         public DataBase()
         {
             var local = "RestauranteDB.db3";
             local = Path.Combine(Root, local);
             Connection = new SQLiteConnection(local);
             Connection.CreateTable<TipoItemCardapio>();
+            Connection.CreateTable<ItemCardapio>();
         }
 
         public T GetItemById<T>(long id) where T : IRule, new()
@@ -35,7 +37,7 @@ namespace App1.Infraestructure
 
         public int SaveItem<T>(T item) where T : IRule
         {
-            if(item.Id != 0)
+            if (item.Id != 0)
             {
                 Connection.Update(item);
                 return item.Id;
@@ -45,12 +47,18 @@ namespace App1.Infraestructure
 
         public int DeleteById<T>(int id) where T : IRule, new()
         {
-                return Connection.Delete<T>(id);
+            return Connection.Delete<T>(id);
         }
 
         public void Update<T>(T item) where T : IRule
         {
             Connection.Update(item);
         }
+
+        public IEnumerable<TipoItemCardapio> GetAllWithChildren()
+        {
+            return Connection.GetAllWithChildren<TipoItemCardapio>().OrderBy(i => i.Nome).ToList();
+        }
+
     }
 }
